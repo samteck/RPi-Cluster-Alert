@@ -3,9 +3,9 @@
 import paho.mqtt.client as paho
 
 # Eclipse Broker Address
-broker="192.168.1.184"
+broker="***********"
 port=1883
-#username_pw_set(username="samarth456",password="5amarth@123#99")
+#username_pw_set(username="*******",password="******")
 
 def on_publish(client,userdata,result):             #create function for callback
     print("data published \n")
