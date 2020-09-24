@@ -25,11 +25,11 @@ def main():
 
         # Add the arguments to the parser
         ap.add_argument("-c", "--client", required=True, help="mqtt client name")
-        ap.add_argument("-r", "--rpi-topic", required=True, help="track raspberry pi topic")
+        ap.add_argument("-r", "--rpi", required=True, help="track raspberry pi topic")
         args = vars(ap.parse_args())
 
         client = str(args['client'])
-        topic = str(args['topic'])
+        rpi = str(args['rpi'])
     except:
         print('please check the arguments passed')
 
@@ -46,16 +46,16 @@ def main():
     except:
         print('please check the config file')
 
-    try:
-        client2= paho.Client(client)                           #create client object                          
-        client2.on_connect = on_connect                       #assign function to callback
-        client2.on_message = on_message                       #assign function to callback
-        client2.username_pw_set(username=username,password=password)
-        client2.connect(broker,port)                             #establish connection
-        client2.subscribe(topic)
-        client.loop_forever()
-    except:
-        print('connection to broker unsuccessfull')
+    #try:
+    client2= paho.Client(client)                           #create client object                          
+    client2.on_connect = on_connect                       #assign function to callback
+    client2.on_message = on_message                       #assign function to callback
+    client2.username_pw_set(username=username,password=password)
+    client2.connect(broker,port)                             #establish connection
+    client2.subscribe(rpi)
+    client2.loop_forever()
+    #except:
+    #    print('connection to broker unsuccessfull')
 
 if __name__ == '__main__':
     main()
