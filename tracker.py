@@ -17,6 +17,7 @@ led = 2
 IO.setwarnings(False)
 IO.setmode(IO.BCM)
 IO.setup(led,IO.OUT)
+IO.output(led,IO.LOW)
 
 def on_connect(client, userdata, flags, rc):
     """Callback for when a device connects."""
@@ -40,7 +41,7 @@ def check_breakdown(str):
             glitter()
             i+=1
 
-# led light on-off            
+# led light on-off
 def glitter():
     IO.output(led,IO.HIGH)
     time.sleep(1)
