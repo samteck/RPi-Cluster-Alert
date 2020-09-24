@@ -1,0 +1,507 @@
+[
+    {
+        "id": "1b0cac5e.8f3f14",
+        "type": "mqtt in",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "topic": "khal-drogo",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "a2ac33a.c7308d",
+        "x": 80,
+        "y": 300,
+        "wires": [
+            [
+                "a861674a.ae77e8",
+                "ae36a891.224028",
+                "ea5399e2.b5d248"
+            ]
+        ]
+    },
+    {
+        "id": "2ada32c6.1db6ce",
+        "type": "ui_template",
+        "z": "e9e6c62c.f9a428",
+        "group": "69ddfad2.f4f4b4",
+        "name": "Logo",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<script id=\"clockScript1\" type=\"text/javascript\">\n    var clockInterval;\n    $(function () {\n        if (clockInterval) return;\n\n        //add logo\n        var div1 = $('<div/>');\n        var logo = new Image();\n\n        logo.src = '/tft.png'\n        logo.height = 45;\n        div1[0].style.margin = '10px auto';\n\n        div1.append(logo);\n\n        //add clock\n        var div2 = $('<div/>');\n        var p = $('<p/>');\n\n        div2.append(p);\n        div2[0].style.margin = '5px';\n\n        function displayTime() {\n            p.text(new Date().toLocaleString());\n        }\n        \n        clockInterval = setInterval(displayTime, 1000);\n\n        //add to toolbar when it's available\n        var addToToolbarTimer;\n        \n        function addToToolbar() {\n            var toolbar = $('.md-toolbar-tools');\n            \n            if(!toolbar.length) return;\n            \n            toolbar.append(div1);\n            toolbar.append(div2);\n            clearInterval(addToToolbarTimer);\n        }\n        addToToolbarTimer = setInterval(addToToolbar, 100);\n    });\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "x": 70,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "73d4f01c.163ac",
+        "type": "ui_template",
+        "z": "e9e6c62c.f9a428",
+        "group": "69ddfad2.f4f4b4",
+        "name": "Background",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    body {\n        background-image: url(\"/aqi-background-7.jpg\");\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 90,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7c3d82f9.10ec5c",
+        "type": "ui_led",
+        "z": "e9e6c62c.f9a428",
+        "group": "69ddfad2.f4f4b4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "John Snow",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "red",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "green",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "",
+        "x": 670,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "24865426.53ccbc",
+        "type": "ui_led",
+        "z": "e9e6c62c.f9a428",
+        "group": "69ddfad2.f4f4b4",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Khal Drogo",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "red",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "green",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "a2b13b9.15b95c8",
+        "type": "trigger",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "op1": "",
+        "op2": "false",
+        "op1type": "nul",
+        "op2type": "bool",
+        "duration": "7",
+        "extend": true,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "147cb334.beb87d",
+                "f7366dd4.086f8"
+            ]
+        ]
+    },
+    {
+        "id": "309544d.39af1bc",
+        "type": "trigger",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "op1": "",
+        "op2": "false",
+        "op1type": "nul",
+        "op2type": "bool",
+        "duration": "7",
+        "extend": true,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 460,
+        "y": 380,
+        "wires": [
+            [
+                "cefecb16.7ba268",
+                "6b5d4028.880a9"
+            ]
+        ]
+    },
+    {
+        "id": "133594ac.daccbb",
+        "type": "mqtt in",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "topic": "john-snow",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "a2ac33a.c7308d",
+        "x": 80,
+        "y": 240,
+        "wires": [
+            [
+                "34c89c43.a5ac64",
+                "340f5bc6.3cb094",
+                "1eec101a.891e8"
+            ]
+        ]
+    },
+    {
+        "id": "34c89c43.a5ac64",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "if-else",
+        "func": "if (msg.payload.status == \"on\")\n    msg.payload = true\nelse if (msg.payload.status == \"off\")\n    msg.payload = false\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "7c3d82f9.10ec5c"
+            ]
+        ]
+    },
+    {
+        "id": "a861674a.ae77e8",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "if-else",
+        "func": "if (msg.payload.status == \"on\")\n    msg.payload = true\nelse if (msg.payload.status == \"off\")\n    msg.payload = false\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 390,
+        "y": 300,
+        "wires": [
+            [
+                "24865426.53ccbc"
+            ]
+        ]
+    },
+    {
+        "id": "340f5bc6.3cb094",
+        "type": "debug",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2d4a7cf.fd90284",
+        "type": "http request",
+        "z": "e9e6c62c.f9a428",
+        "name": "HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://rest-api.d7networks.com/secure/send",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 730,
+        "y": 100,
+        "wires": [
+            [
+                "79ceba11.ac69e4"
+            ]
+        ]
+    },
+    {
+        "id": "147cb334.beb87d",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "HTTP Body",
+        "func": "msg.payload = {\"to\":\"+918700282852\",\"content\":\"John Snow is Down\",\"from\":\"smsinfo\"};\n\nmsg.headers = {};\nmsg.headers['Authorization'] = 'Basic a2N2YzI4Njc6VENGemxBamg=';\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Postman-Token'] = 'e747d85c-21d3-411c-acf5-f93d2977598b';\nmsg.headers['cache-control'] = 'no-cache';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 100,
+        "wires": [
+            [
+                "2d4a7cf.fd90284"
+            ]
+        ]
+    },
+    {
+        "id": "aa03ab22.f1e278",
+        "type": "http request",
+        "z": "e9e6c62c.f9a428",
+        "name": "HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://rest-api.d7networks.com/secure/send",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 740,
+        "y": 440,
+        "wires": [
+            [
+                "e07de55a.c3a998"
+            ]
+        ]
+    },
+    {
+        "id": "cefecb16.7ba268",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "HTTP Body",
+        "func": "msg.payload = {\"to\":\"+918700282852\",\"content\":\"Khal Drogo is Down\",\"from\":\"smsinfo\"};\n\nmsg.headers = {};\nmsg.headers['Authorization'] = 'Basic a2N2YzI4Njc6VENGemxBamg=';\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Postman-Token'] = 'e747d85c-21d3-411c-acf5-f93d2977598b';\nmsg.headers['cache-control'] = 'no-cache';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 440,
+        "wires": [
+            [
+                "aa03ab22.f1e278"
+            ]
+        ]
+    },
+    {
+        "id": "f6b0ec3b.9b712",
+        "type": "mqtt out",
+        "z": "e9e6c62c.f9a428",
+        "name": "Reply khal drogo",
+        "topic": "khal-drogo",
+        "qos": "1",
+        "retain": "false",
+        "broker": "a2ac33a.c7308d",
+        "x": 1050,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6b5d4028.880a9",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "status off",
+        "func": "if (msg.payload === false)\n    msg.payload = {\"status\":\"off\"}\n    return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 760,
+        "y": 380,
+        "wires": [
+            [
+                "f6b0ec3b.9b712"
+            ]
+        ]
+    },
+    {
+        "id": "880233e1.a5ea",
+        "type": "mqtt out",
+        "z": "e9e6c62c.f9a428",
+        "name": "Reply john-snow",
+        "topic": "john-snow",
+        "qos": "1",
+        "retain": "false",
+        "broker": "a2ac33a.c7308d",
+        "x": 1050,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f7366dd4.086f8",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "status off",
+        "func": "if (msg.payload === false)\n    msg.payload = {\"status\":\"off\"}\n    return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 760,
+        "y": 160,
+        "wires": [
+            [
+                "880233e1.a5ea"
+            ]
+        ]
+    },
+    {
+        "id": "ae36a891.224028",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "only ON",
+        "func": "if (msg.payload.status == \"on\")\n    return msg;\nelse ;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 280,
+        "y": 340,
+        "wires": [
+            [
+                "309544d.39af1bc"
+            ]
+        ]
+    },
+    {
+        "id": "1eec101a.891e8",
+        "type": "function",
+        "z": "e9e6c62c.f9a428",
+        "name": "only ON",
+        "func": "if (msg.payload.status == \"on\")\n    return msg;\nelse ;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 280,
+        "y": 200,
+        "wires": [
+            [
+                "a2b13b9.15b95c8"
+            ]
+        ]
+    },
+    {
+        "id": "79ceba11.ac69e4",
+        "type": "debug",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e07de55a.c3a998",
+        "type": "debug",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ea5399e2.b5d248",
+        "type": "debug",
+        "z": "e9e6c62c.f9a428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 250,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a2ac33a.c7308d",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Azure Mqtt broker",
+        "broker": "13.71.67.84",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "69ddfad2.f4f4b4",
+        "type": "ui_group",
+        "z": "",
+        "name": "Check the status here",
+        "tab": "6e1081c5.28e13",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false
+    },
+    {
+        "id": "6e1081c5.28e13",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Raspberry Pi's Status",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
