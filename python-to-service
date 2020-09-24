@@ -1,0 +1,27 @@
+## Creating systemctl services out of python programs
+
+- sudo nano /lib/systemd/system/tracker.service
+- Edit as below
+
+[Unit]
+Description=Tracker Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+WorkingDirectory=/home/ubuntu/RPi-Cluster-Alert
+User=ubuntu
+Type=simple
+ExecStart=/usr/bin/python3 /home/ubuntu/RPi-Cluster-Alert/tracker.py -c rpi5 -r khal-drogo
+StandardInput=tty-force
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+- save and exit
+- sudo systemctl daemon-reload
+- sudo systemctl stop agent.service
+- sudo systemctl start agent.service
+- sudo systemctl status agent.service
+- sudo systemctl restart agent.service
