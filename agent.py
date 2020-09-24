@@ -59,9 +59,9 @@ def main():
     while 1 :
         try:
             ret= client1.publish(topic,"{\"status\":\"on\"}")
-            time.sleep(5)
         except:
             print('can not publish the data')
+        time.sleep(5)
 
 if __name__ == '__main__':
     main()
