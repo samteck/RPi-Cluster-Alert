@@ -13,7 +13,7 @@ import time
 def on_connect(unused_client, unused_userdata, unused_flags, rc):
     """Callback for when a device connects."""
     print('sucessfully connected')
- 
+
 def on_publish(unused_client, unused_userdata, unused_mid):
     """Paho callback when a message is sent to the broker."""
     print('status message published')
@@ -36,7 +36,7 @@ def main():
 
     try:
         # Read local `config.ini` file.
-        config = configparser.ConfigParser()                                     
+        config = configparser.ConfigParser()
         config.read('./config.ini')
 
         # Get values from our .ini file
@@ -48,7 +48,7 @@ def main():
         print('please check the config file')
 
     try:
-        client1= paho.Client(client)                           #create client object                          
+        client1= paho.Client(client)                           #create client object
         client1.on_connect = on_connect                       #assign function to callback
         client1.on_publish = on_publish                       #assign function to callback
         client1.username_pw_set(username=username,password=password)
