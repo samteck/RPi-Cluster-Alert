@@ -17,6 +17,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     """Paho callback when a message is received."""
     print(msg.topic+" "+str(msg.payload))
+    
 
 def main():
     try:
@@ -46,16 +47,16 @@ def main():
     except:
         print('please check the config file')
 
-    #try:
-    client2= paho.Client(client)                           #create client object                          
-    client2.on_connect = on_connect                       #assign function to callback
-    client2.on_message = on_message                       #assign function to callback
-    client2.username_pw_set(username=username,password=password)
-    client2.connect(broker,port)                             #establish connection
-    client2.subscribe(rpi)
-    client2.loop_forever()
-    #except:
-    #    print('connection to broker unsuccessfull')
+    try:
+        client2= paho.Client(client)                           #create client object                          
+        client2.on_connect = on_connect                       #assign function to callback
+        client2.on_message = on_message                       #assign function to callback
+        client2.username_pw_set(username=username,password=password)
+        client2.connect(broker,port)                             #establish connection
+        client2.subscribe(rpi)
+        client2.loop_forever()
+    except:
+        print('connection to broker unsuccessfull')
 
 if __name__ == '__main__':
     main()
