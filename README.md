@@ -20,7 +20,7 @@ Commands to control the services
 
 Here is an Architecture of the system
 
-<img src="https://github.com/samteck/RPi-Cluster-Alert/blob/master/rpi-cluster-alert.png" width="500">
+<img src="https://github.com/samteck/RPi-Cluster-Alert/blob/master/rpi-cluster-alert.png" width="1000">
 
 ### Current system Explanation
 
