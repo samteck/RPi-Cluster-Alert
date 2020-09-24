@@ -43,9 +43,9 @@ def check_breakdown(str):
 # led light on-off            
 def glitter():
     IO.output(led,IO.HIGH)
-    time.sleep(.5)
+    time.sleep(1)
     IO.output(led,IO.LOW)
-    time.sleep(.5)
+    time.sleep(1)
 
 def main():
     try:
